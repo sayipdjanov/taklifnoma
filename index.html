@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sadriddin & Muborak - To‘yga taklif</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(160deg, #0a0a0a, #1a1a1a);
+            color: #d4af37;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 0.5rem 0;
+        }
+        h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .countdown div {
+            text-align: center;
+        }
+        .countdown span {
+            display: block;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #d4af37;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        .date {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sadriddin & Muborak</h1>
+    <h2>Sizni hayotimizdagi eng baxtli kunimizga – nikoh to‘yimizga taklif qilamiz</h2>
+       <p>Yuragimiz quvonchga to‘lgan, orzularimiz ro‘yobga chiqqan shu go‘zal kunda bizning quvonchimizga sherik bo‘lishingizni istaymiz.</p>
+    <div class="countdown">
+        <div><div id="days">00</div><span>Kun</span></div>
+        <div><div id="hours">00</div><span>Soat</span></div>
+        <div><div id="minutes">00</div><span>Daqiqa</span></div>
+    </div>
+    <a class="button" href="https://www.google.com/maps?q=Azizbek+To'yxonasi,+Termiz,+Uzbekistan" target="_blank">📍 To‘y joyiga yo‘l olish</a>
+    <div class="date">12-iyul 2025-yil<br>19:00 da</div>
+
+    <script>
+        const weddingDate = new Date("2025-07-12T19:00:00");
+        function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
+
+            if (diff <= 0) {
+                document.querySelector(".countdown").innerHTML = "To‘y boshlandi!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
